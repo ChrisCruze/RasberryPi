@@ -1,0 +1,9 @@
+flask
+redis
+requests
+flask-restful
+schedule
+flask_cors
+pytz
+retrying
+prometheus_client
