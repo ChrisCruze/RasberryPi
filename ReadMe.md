@@ -26,3 +26,6 @@ Monitoring will also take place so that I can know the temperature, pressure, od
 ## Alexa Enabled
 
 ## Electron Dashboard
+
+## Grafana, Prometheus, NodeExporter
+This will monitor the overall state of the van
