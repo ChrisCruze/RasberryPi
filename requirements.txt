@@ -7,3 +7,4 @@ flask_cors
 pytz
 retrying
 prometheus_client
+sense-hat

@@ -41,9 +41,9 @@
         <div class="wrapper wrapper-content">
             <div class="row  border-bottom white-bg dashboard-header">
             <div class="col-md-12">
-                <h3>Consumer Lending Technology Portfolio Reporting</h3>
+                <h3></h3>
                 <small></small>
-<!--                <button class="ui-button ui-widget ui-corner-all" id="test">Test Button</button>-->
+                <button class="ui-button ui-widget ui-corner-all" onclick="hello_message()" >Hello Message</button>
             </div>
             </div>
 
@@ -111,6 +111,18 @@
 </div>
 
 <script>
+
+function hello_message(){
+    $.ajax({
+        type:'Get',
+        url:`/message_hello`,
+        contentType:'application/json',
+        success: function(data){
+            console.log({data})
+        }
+    })
+}
+
 
 
 
@@ -376,6 +388,7 @@ function jobs_columns_define(){
             }
         ]
     }
+
 
 function jobs_table_update(){
         $.ajax({
