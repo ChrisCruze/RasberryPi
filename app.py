@@ -64,6 +64,7 @@ class LightOn(Resource):
 
 class LightOff(Resource):
     def get(self):
+        channel = 26
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(channel,GPIO.OUT)
         GPIO.output(channel, GPIO.LOW)
