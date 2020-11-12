@@ -4,8 +4,23 @@ The objective of this readme is to spell out all the features the Raspberry Pi m
 # Control Panel
 The control panel will serve to control different units within the van, which will include the heater and maxair fann. These items need to be controlled so that it they can be triggered automatically from an Alexa command or from the press of a button. Ideally, the control panel is built with Electron so that it can look nice and be launched like an app. 
 
+
+## Circuits to be controlled by Relay Module
+1. bathroom light
+2. all lights 
+3. heater
+4. 360 camera
+5. rear view mirror
+6. max air fan
+7. usb switch
+8. phone mount
+
+9. Possible 120v
+10. Water Pump 
+
 ## MaxxAir Fan & Chinese Diesel Heater
 The connection will be made via IR Signals since it is remote operated. 
+
 
 ## Overhead Lights, Strobe Lights, Water Pump
 This connection can be made via a remote if we install one or direct connection to the fuse
