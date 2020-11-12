@@ -21,7 +21,6 @@ class MessageHello(Resource):
     def get(self):
         sense = SenseHat()
         sense.show_message("Hello world")
-        return sense 
 
 api.add_resource(MessageHello, '/message_hello')
 
