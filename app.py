@@ -11,7 +11,7 @@ import time
 import traceback
 import json
 from sense_hat import SenseHat
-
+import RPi.GPIO as GPIO
 
 server = Flask(__name__)
 api = Api(server)
@@ -54,6 +54,23 @@ api.add_resource(Humidity, '/Humidity')
 api.add_resource(Accelerometer, '/accelerometer')
 
 
+class LightOn(Resource):
+    def get(self):
+        channel = 26
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(channel,GPIO.OUT)
+        GPIO.output(channel, GPIO.HIGH)
+
+
+class LightOff(Resource):
+    def get(self):
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(channel,GPIO.OUT)
+        GPIO.output(channel, GPIO.LOW)
+
+
+api.add_resource(LightOn, '/light_on')
+api.add_resource(LightOff, '/light_off')
 
 """
 Below are the API definitions

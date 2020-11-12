@@ -29,3 +29,5 @@ Monitoring will also take place so that I can know the temperature, pressure, od
 
 ## Grafana, Prometheus, NodeExporter
 This will monitor the overall state of the van
+
+## Should Display Time

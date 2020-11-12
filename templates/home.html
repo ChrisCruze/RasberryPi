@@ -44,6 +44,8 @@
                 <h3></h3>
                 <small></small>
                 <button class="ui-button ui-widget ui-corner-all" onclick="hello_message()" >Hello Message</button>
+                <button class="ui-button ui-widget ui-corner-all" onclick="light_on()" >On</button>
+                <button class="ui-button ui-widget ui-corner-all" onclick="light_off()" >Off</button>
             </div>
             </div>
 
@@ -111,6 +113,30 @@
 </div>
 
 <script>
+
+
+function light_on(){
+    $.ajax({
+        type:'Get',
+        url:`/light_on`,
+        contentType:'application/json',
+        success: function(data){
+            console.log({data})
+        }
+    })
+}
+
+
+function light_off(){
+    $.ajax({
+        type:'Get',
+        url:`/light_off`,
+        contentType:'application/json',
+        success: function(data){
+            console.log({data})
+        }
+    })
+}
 
 function hello_message(){
     $.ajax({
