@@ -10,9 +10,50 @@ import jobs
 import time
 import traceback
 import json
+from sense_hat import SenseHat
+
+
 server = Flask(__name__)
 api = Api(server)
 CORS(server)
+
+class MessageHello(Resource):
+    def get(self):
+        sense = SenseHat()
+        sense.show_message("Hello world")
+        return sense 
+
+api.add_resource(MessageHello, '/message_hello')
+
+class Pressure(Resource):
+    def get(self):
+        sense = SenseHat()
+        pressure = sense.get_pressure()
+        return pressure 
+
+class Temperature(Resource):
+    def get(self):
+        sense = SenseHat()
+        temp = sense.get_temperature()
+        return temp 
+
+class Humidity(Resource):
+    def get(self):
+        sense = SenseHat()
+        temp = sense.get_humidity()
+        return temp 
+
+class Accelerometer(Resource):
+    def get(self):
+        sense = SenseHat()
+        accelerometer = sense.get_accelerometer_raw()
+        return accelerometer 
+
+api.add_resource(Pressure, '/pressure')
+api.add_resource(Temperature, '/Temperature')
+api.add_resource(Humidity, '/Humidity')
+api.add_resource(Accelerometer, '/accelerometer')
+
 
 
 """
@@ -90,8 +131,6 @@ api.add_resource(Start, '/start/<string:file_id>')
 
 
 
-
-
 @server.route("/")
 def hello():
     return render_template("home.html")
@@ -110,33 +149,8 @@ def upload_file():
         uploaded_file.save(directory)
     return redirect(request.url)
 
-def run_job_listener():
-    while True:
-        python_files = jobs.jobs_ready_get()
-        for python_file in python_files:
-            p = Process(target=jobs.initiate_python_script, args=(python_file,))
-            p.start()
-            p.join()
-        time.sleep(5)
-
-
-@server.route("/run")
-def test_function():
-    etl_jobs = Process(target=run_job_listener)
-    etl_jobs.start()
-    print ("Running")
-    return "Running Threaded Job"
-
-
-
-
-
-def run_server():
-    server.run(host='0.0.0.0', debug=True, threaded=True)
 
 
 if __name__ == "__main__":
-    etl_jobs = Process(target=run_job_listener)
-    flask_server = Process(target=run_server)
-    etl_jobs.start()
-    flask_server.start()
+    server.run(host='0.0.0.0', debug=True, threaded=True)
+
