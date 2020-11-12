@@ -150,7 +150,7 @@ api.add_resource(Start, '/start/<string:file_id>')
 
 @server.route("/")
 def hello():
-    return render_template("home.html")
+    return render_template("neomorphism.html")
 
 @server.route("/job")
 def script_page(name=None):
