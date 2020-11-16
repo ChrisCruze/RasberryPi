@@ -33,3 +33,6 @@ The control panel will serve to control different units within the van, which wi
 | Bathroom | 7 | 13 | 27 | Yellow|
 | USB Port| 8 | 11 | 17 | Orange|
 
+
+Black Wire to 8 Module Relay is Ground which connects to Number 6 on the board
+Red Wire to 8 Module Relay is 5v wire which connects to Number 4 on the board
