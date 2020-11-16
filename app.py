@@ -73,6 +73,24 @@ class LightOff(Resource):
 api.add_resource(LightOn, '/light_on')
 api.add_resource(LightOff, '/light_off')
 
+class On(Resource):
+    def get(self,num):
+        channel = int(num)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(channel,GPIO.OUT)
+        GPIO.output(channel, GPIO.HIGH)
+
+class Off(Resource):
+    def get(self,num):
+        channel = int(num)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(channel,GPIO.OUT)
+        GPIO.output(channel, GPIO.LOW)
+
+api.add_resource(On, '/on/<string:num>')
+api.add_resource(Off, '/off/<string:num>')
+
+
 """
 Below are the API definitions
 """
