@@ -27,7 +27,7 @@ The control panel will serve to control different units within the van, which wi
 
 | Name | Relay #  |  Board #     |  GPIO | Color 
 |:----------:|:-------------:|:------:|:------:|:------:|
-| MaxxAir Fan| 4 | 31 | 6 | Blue|
+| MaxxAir Fan| 4 | 31 | 6 | Brown|
 | Heater| 5 | 29 | 5 | Purple|
 | Lights| 6 | 15 | 22 | Green|
 | Bathroom | 7 | 13 | 27 | Yellow|
