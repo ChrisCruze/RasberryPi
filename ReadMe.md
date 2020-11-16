@@ -23,48 +23,13 @@ The control panel will serve to control different units within the van, which wi
 
 
 ### GPIO Pin Configuration
-Three Relay Board
-Physical 37 - 26 - 
-Physical 38 - 20 - 
-Physical 40 - 21 - 
-
-Eight Relay Board
-K1 - 
-K2 - 
-K3 - 
-K4 - Physical 31 - GPIO 6 - MaxxAir Fan - BLUE
-K5 - Physical 29 - GPIO 5 - Diesel Heater - PURPLE
-K6 - Physical 15 - GPIO 22 - All the Lights - GREEN
-K7 - Physical 13  - GPIO 27 - Bathroom Light - YELLOW
-K8 - Physical 11 - GPIO 17 - USB Port - ORANGE
 
 
+| Name | Relay #  |  Board #     |  GPIO | Color 
+|:----------:|:-------------:|:------:|:------:|:------:|
+| MaxxAir Fan| 4 | 31 | 6 | Blue|
+| Heater| 5 | 29 | 5 | Purple|
+| Lights| 6 | 15 | 22 | Green|
+| Bathroom | 7 | 13 | 27 | Yellow|
+| USB Port| 8 | 11 | 17 | Orange|
 
-
-
-
-
-
-
-
-
-
-
-
-
-24 - 360 Camera (TBD)
-27 - Rear View Camera (TBD)
-22 - Inverter (TBD)
-23 - Water Pump (TBD)
-17 - USB Port (K8)
-25 - Bathroom Lights
-5 - Main Lights 
-6 - 
-
-
-
-12v usb
-heater 
-max air fann
-lights
-bathroom lights
