@@ -326,27 +326,27 @@
         <div class="row">
           <div class="col-12">
             <ul>
-              <li class="on">
+              <li class="on" gpio="6" title="Fan">
                 <span>
                   <i class="fa fa-home"></i>
                 </span>
               </li>
-              <li class="off">
+              <li class="off" gpio="5" title="Heater">
                 <span>
                   <i class="fa fa-lightbulb-o"></i>
                 </span>
               </li>
-              <li class="off">
+              <li class="off" gpio="22" title="Lights">
                 <span>
                   <i class="fa fa-wifi"></i>
                 </span>
               </li>
-              <li class="off">
+              <li class="off" gpio="27" title="Bathroom">
                 <span>
                   <i class="fa fa-snowflake-o"></i>
                 </span>
               </li>
-              <li class="on">
+              <li class="on" gpio="17" title="USB Port">
                 <span>
                   <i class="fa fa-plus"></i>
                 </span>
@@ -440,7 +440,50 @@
 
   <script src="https://inspinia.site44.com/js/inspinia.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <script>
 
+
+    function on(num){
+        $.ajax({
+            type:'Get',
+            url:`/on/${num}`,
+            contentType:'application/json',
+            success: function(data){
+                console.log({data})
+            }
+        })
+    }
+    function off(num){
+        $.ajax({
+            type:'Get',
+            url:`/off/${num}`,
+            contentType:'application/json',
+            success: function(data){
+                console.log({data})
+            }
+        })
+    }
+
+
+$( "li" ).on( "click", function() {
+      const on_off_class =  $( this ).attr("class") // $(this)//.attr('class')
+      const gpio =  $( this ).attr("gpio") // $(this)//.attr('class')
+      if (on_off_class == 'on'){
+        $(this).attr('class','off')
+        off(gpio)
+      }
+      else {
+        $(this).attr('class','on')
+        on(gpio)
+
+      }
+});
+
+
+
+
+
+  </script>
 </body>
 
 </html>
