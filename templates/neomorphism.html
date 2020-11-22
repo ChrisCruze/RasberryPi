@@ -328,27 +328,27 @@
             <ul>
               <li class="on" gpio="6" title="Fan">
                 <span>
-                  <i class="fa fa-home"></i>
+                  <i class="fa fa-snowflake-o"></i>
                 </span>
               </li>
-              <li class="off" gpio="5" title="Heater">
+              <li class="on" gpio="5" title="Heater">
+                <span>
+                  <i class="fa fa-sun-o"></i>
+                </span>
+              </li>
+              <li class="on" gpio="22" title="Lights">
                 <span>
                   <i class="fa fa-lightbulb-o"></i>
                 </span>
               </li>
-              <li class="off" gpio="22" title="Lights">
+              <li class="on" gpio="27" title="Bathroom">
                 <span>
-                  <i class="fa fa-wifi"></i>
-                </span>
-              </li>
-              <li class="off" gpio="27" title="Bathroom">
-                <span>
-                  <i class="fa fa-snowflake-o"></i>
+                  <i class="fa fa-bath"></i>
                 </span>
               </li>
               <li class="on" gpio="17" title="USB Port">
                 <span>
-                  <i class="fa fa-plus"></i>
+                  <i class="fa fa-usb"></i>
                 </span>
               </li>
             </ul>
@@ -363,7 +363,7 @@
           <div class="col-12">
             <span class="sha_temp">
               <span>
-                <span class="temp-data"> 16 <sup>&deg;C</sup> </span>
+                <span class="temp-data"> <span id="temperature" >70</span> <sup>&deg;F</sup></span>
                 <span class="temp-info">
                   <i class="fa fa-snowflake-o"></i> Cooling
                 </span>
@@ -384,7 +384,18 @@
               </span>
               <span class="tile_info">
                 Humidity
-                <span>65%</span>
+                <span><span id="humidity">65</span>%</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-12 sha_tile">
+            <div>
+              <span class="tile_icon">
+                <i class="fa fa-fire"></i>
+              </span>
+              <span class="tile_info">
+                Pressure
+                <span><span id="pressure">65</span></span>
               </span>
             </div>
           </div>
@@ -465,20 +476,77 @@
     }
 
 
-$( "li" ).on( "click", function() {
-      const on_off_class =  $( this ).attr("class") // $(this)//.attr('class')
-      const gpio =  $( this ).attr("gpio") // $(this)//.attr('class')
-      if (on_off_class == 'on'){
-        $(this).attr('class','off')
-        off(gpio)
-      }
-      else {
-        $(this).attr('class','on')
-        on(gpio)
 
-      }
-});
+  $( "li" ).on( "click", function() {
+        const on_off_class =  $( this ).attr("class") // $(this)//.attr('class')
+        const gpio =  $( this ).attr("gpio") // $(this)//.attr('class')
+        if (on_off_class == 'on'){
+          $(this).attr('class','off')
+          off(gpio)
+        }
+        else {
+          $(this).attr('class','on')
+          on(gpio)
 
+        }
+  });
+
+
+
+
+
+  </script>
+
+  <script>
+    function celcius_to_farenheight(i){
+      float_num = parseFloat(i)||0
+      return (float_num × 9/5) + 32
+    }
+    
+
+    function temperature_update(){
+        $.ajax({
+            type:'Get',
+            url:`/temperature`,
+            contentType:'application/json',
+            success: function(i){
+                farenheight_number = celcius_to_farenheight(i)
+                $("#temperature").html(farenheight_number.toFixed(1))
+        }
+    }
+
+    function humidity_update(){
+        $.ajax({
+            type:'Get',
+            url:`/humidity`,
+            contentType:'application/json',
+            success: function(i){
+                float_num = parseFloat(i)||0
+                $("#humidity").html(float_num.toFixed(1))
+        }
+    }
+
+    function pressure_update(){
+        $.ajax({
+            type:'Get',
+            url:`/pressure`,
+            contentType:'application/json',
+            success: function(i){
+                float_num = parseFloat(i)||0
+                $("#pressure").html(float_num.toFixed(1))
+        }
+    }
+
+
+    function loop_update(){
+        function refresh(){
+            temperature_update()
+            setTimeout(refresh,5000)
+        }
+        refresh()
+    }
+
+    setTimeout(loop_update,5000)
 
 
 

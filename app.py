@@ -49,8 +49,8 @@ class Accelerometer(Resource):
         return accelerometer 
 
 api.add_resource(Pressure, '/pressure')
-api.add_resource(Temperature, '/Temperature')
-api.add_resource(Humidity, '/Humidity')
+api.add_resource(Temperature, '/temperature')
+api.add_resource(Humidity, '/humidity')
 api.add_resource(Accelerometer, '/accelerometer')
 
 
