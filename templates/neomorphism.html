@@ -514,6 +514,7 @@
                 $("#temperature").html(farenheight_number.toFixed(1))
         }
     }
+    )}
 
     function humidity_update(){
         $.ajax({
@@ -525,6 +526,7 @@
                 $("#humidity").html(float_num.toFixed(1))
         }
     }
+    )}
 
     function pressure_update(){
         $.ajax({
@@ -536,11 +538,15 @@
                 $("#pressure").html(float_num.toFixed(1))
         }
     }
+    )}
 
 
     function loop_update(){
         function refresh(){
             temperature_update()
+            humidity_update()
+            pressure_update()
+
             setTimeout(refresh,5000)
         }
         refresh()
