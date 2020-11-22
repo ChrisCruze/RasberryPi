@@ -363,7 +363,7 @@
           <div class="col-12">
             <span class="sha_temp">
               <span>
-                <span class="temp-data"> <span id="temperature" >70</span> <sup>&deg;F</sup></span>
+                <span class="temp-data"> <span id="temperature" >-</span> <sup>&deg;F</sup></span>
                 <span class="temp-info">
                   <i class="fa fa-snowflake-o"></i> Cooling
                 </span>
@@ -384,7 +384,7 @@
               </span>
               <span class="tile_info">
                 Humidity
-                <span><span id="humidity">65</span>%</span>
+                <span><span id="humidity">-</span>%</span>
               </span>
             </div>
           </div>
@@ -395,7 +395,7 @@
               </span>
               <span class="tile_info">
                 Pressure
-                <span><span id="pressure">65</span></span>
+                <span><span id="pressure">-</span></span>
               </span>
             </div>
           </div>
@@ -494,13 +494,9 @@
 
 
 
-
-  </script>
-
-  <script>
     function celcius_to_farenheight(i){
       float_num = parseFloat(i)||0
-      return (float_num × 9/5) + 32
+      return (float_num * 9/5) + 32
     }
     
 
@@ -546,7 +542,6 @@
             temperature_update()
             humidity_update()
             pressure_update()
-
             setTimeout(refresh,5000)
         }
         refresh()
