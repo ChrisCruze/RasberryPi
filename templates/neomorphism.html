@@ -360,10 +360,20 @@
       <!-- Start Section Body 1 -->
       <section id="sha_temp_body" class="col-12">
         <div class="row">
-          <div class="col-12">
+          <div class="col-6">
+            <span class="sha_temp" style="border-radius:25%;width:300px">
+              <span>
+                <span class="temp-data"> <span id="time" ></span></span>
+                <span class="temp-info">
+                  <i class="fa fa-clock-o"></i> <span id="date" ></span>
+                </span>
+              </span>
+            </span>
+          </div>
+          <div class="col-6">
             <span class="sha_temp">
               <span>
-                <span class="temp-data"> <span id="temperature" >-</span> <sup>&deg;F</sup></span>
+                <span class="temp-data"> <span id="temperature" ></span> <sup>&deg;F</sup></span>
                 <span class="temp-info">
                   <i class="fa fa-snowflake-o"></i> Cooling
                 </span>
@@ -372,6 +382,7 @@
           </div>
         </div>
       </section>
+
       <!-- End Section Body 1 -->
 
       <!-- Start Section Body 2 -->
@@ -492,7 +503,12 @@
   });
 
 
-
+    function time_update(){
+      time = moment().format('h:mma')
+      date = moment().format('M/DD(ddd)')
+        $("#time").html(time)
+        $("#date").html(date)
+      }
 
 
 
@@ -548,6 +564,7 @@
 
     function loop_update(){
         function refresh(){
+            time_update()
             temperature_update()
             humidity_update()
             pressure_update()
