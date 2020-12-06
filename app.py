@@ -57,8 +57,8 @@ api.add_resource(Accelerometer, '/accelerometer')
 
 class Sound(Resource):
     def get(self,num):
-        #os.system("aplay jarvis_intro.wav")
-        os.system("aplay " + num)
+        os.system("aplay RaspberryPi/jarvis_intro.wav")
+        # os.system("aplay " + num)
         return num
 
 api.add_resource(Sound, '/sound/<string:num>')
