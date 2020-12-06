@@ -55,13 +55,33 @@ api.add_resource(Humidity, '/humidity')
 api.add_resource(Accelerometer, '/accelerometer')
 
 
+def color_to_rgb(s):
+    if s == 'white':
+        return (255, 255, 255)
+    elif s == 'red':
+        return (255,0,0)
+    elif s == 'blue':
+        return (0,0,255)
+    else:
+        return (255, 255, 255)
+
+class Color(Resource):
+    def get(self,color):
+        sense = SenseHat()
+        rgb_tup = color_to_rgb(color)
+        sense.clear(rgb_tup)
+
+api.add_resource(Color, '/color/<string:color>')
+
+
+
 class Sound(Resource):
-    def get(self,num):
+    def get(self):
         os.system("aplay RaspberryPi/jarvis_intro.wav")
         # os.system("aplay " + num)
         return num
 
-api.add_resource(Sound, '/sound/<string:num>')
+api.add_resource(Sound, '/sound')
 
 
 class LightOn(Resource):
@@ -99,6 +119,11 @@ class Off(Resource):
 
 api.add_resource(On, '/on/<string:num>')
 api.add_resource(Off, '/off/<string:num>')
+
+
+
+
+
 
 
 def bytes_to_megabytes(num):
