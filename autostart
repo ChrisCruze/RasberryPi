@@ -1,0 +1,8 @@
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@python3 /home/pi/RaspberryPi/app.py
+@bash /home/pi/RaspberryPi/bootup_electron.sh
+@bash /home/pi/startsample.sh
+@bash /home/pi/RaspberryPi/bootup_ngrok.sh
+@bash /home/pi/RaspberryPi/bootup_ngrok_ssh.sh
