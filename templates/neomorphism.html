@@ -520,7 +520,7 @@
     function temperature_update(){
         $.ajax({
             type:'Get',
-            url:`http://localhost:5000/temperature`,
+            url:`/temperature`,
             contentType:'application/json',
             success: function(i){
                 float_num = parseFloat(i)||0
@@ -535,7 +535,7 @@
     function humidity_update(){
         $.ajax({
             type:'Get',
-            url:`http://localhost:5000/humidity`,
+            url:`/humidity`,
             contentType:'application/json',
             success: function(i){
                 float_num = parseFloat(i)||0
@@ -550,7 +550,7 @@
     function pressure_update(){
         $.ajax({
             type:'Get',
-            url:`http://localhost:5000/pressure`,
+            url:`/pressure`,
             contentType:'application/json',
             success: function(i){
                 float_num = parseFloat(i)||0
@@ -579,7 +579,7 @@
     function sound_initiate(){
         $.ajax({
             type:'Get',
-            url:`http://localhost:5000/sound`,
+            url:`/sound`,
             contentType:'application/json',
             success: function(i){
         }
