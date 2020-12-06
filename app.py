@@ -12,6 +12,7 @@ import traceback
 import json
 from sense_hat import SenseHat
 import RPi.GPIO as GPIO
+import speedtest  
 
 server = Flask(__name__)
 api = Api(server)
