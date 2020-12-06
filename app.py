@@ -56,11 +56,12 @@ api.add_resource(Accelerometer, '/accelerometer')
 
 
 class Sound(Resource):
-    def get(self):
-        os.system("aplay jarvis_intro.wav")
-        return 'Success'
+    def get(self,num):
+        #os.system("aplay jarvis_intro.wav")
+        os.system("aplay " + num)
+        return num
 
-api.add_resource(Sound, '/sound')
+api.add_resource(Sound, '/sound/<string:num>')
 
 
 class LightOn(Resource):
@@ -109,11 +110,13 @@ def bytes_to_megabytes(i):
         return 0 
 class DownloadSpeed(Resource):
     def get(self):
+        st = speedtest.Speedtest() 
         num = st.download()
         return bytes_to_megabytes(num)
 
 class UploadSpeed(Resource):
     def get(self):
+        st = speedtest.Speedtest() 
         num = st.upload()
         return bytes_to_megabytes(num)
 
@@ -143,7 +146,7 @@ api.add_resource(Read, '/read/<string:file_id>')
 
 class Jobs(Resource):
     def get(self):
-        directory = FileFunctions().static_directory_get('jobs')
+        directory = os.getcwd()#FileFunctions().static_directory_get('jobs')
         array = FileFunctions().files_from_directory(directory)
         return array
 api.add_resource(Jobs, '/jobs')
