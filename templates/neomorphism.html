@@ -417,7 +417,7 @@
               </span>
               <span class="tile_info">
                 Internet
-                <span>20 mbps</span>
+                <span><span id="download_speed">-</span> mbps</span>
               </span>
             </div>
           </div>
@@ -574,6 +574,35 @@
     }
 
     setTimeout(loop_update,5000)
+
+
+
+
+    function download_speed_update(){
+        $.ajax({
+            type:'Get',
+            url:`/download_speed`,
+            contentType:'application/json',
+            success: function(i){
+                float_num = parseFloat(i)||0
+                if (float_num > 0){
+                    $("#download_speed").html(float_num.toFixed(1))
+                }
+        }
+    }
+    )}
+
+
+
+    function loop_update_long(){
+        function refresh(){
+            download_speed_update()
+            setTimeout(refresh,1000*60*60)
+        }
+        refresh()
+    }
+
+    setTimeout(loop_update_long,5000)
 
 
     function sound_initiate(){

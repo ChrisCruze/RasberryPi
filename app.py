@@ -99,6 +99,28 @@ api.add_resource(On, '/on/<string:num>')
 api.add_resource(Off, '/off/<string:num>')
 
 
+def bytes_to_megabytes(i):
+    try:
+        divided_num = num/1000000
+        rounded_num = round(divided_num,1)
+        return rounded_num
+    except:
+        return 0 
+class DownloadSpeed(Resource):
+    def get(self):
+        num = st.download()
+        return bytes_to_megabytes(num)
+
+class UploadSpeed(Resource):
+    def get(self):
+        num = st.upload()
+        return bytes_to_megabytes(num)
+
+
+api.add_resource(DownloadSpeed, '/download_speed')
+api.add_resource(UploadSpeed, '/upload_speed')
+
+
 """
 Below are the API definitions
 """
