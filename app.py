@@ -101,7 +101,7 @@ api.add_resource(On, '/on/<string:num>')
 api.add_resource(Off, '/off/<string:num>')
 
 
-def bytes_to_megabytes(i):
+def bytes_to_megabytes(num):
     try:
         divided_num = num/1000000
         rounded_num = round(divided_num,1)
