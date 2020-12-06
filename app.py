@@ -54,6 +54,14 @@ api.add_resource(Humidity, '/humidity')
 api.add_resource(Accelerometer, '/accelerometer')
 
 
+class Sound(Resource):
+    def get(self):
+        os.system("aplay jarvis_intro.wav")
+        return 'Success'
+
+api.add_resource(Sound, '/sound')
+
+
 class LightOn(Resource):
     def get(self):
         channel = 26

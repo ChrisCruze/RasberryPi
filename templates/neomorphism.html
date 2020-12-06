@@ -576,7 +576,15 @@
     setTimeout(loop_update,5000)
 
 
-
+    function sound_initiate(){
+        $.ajax({
+            type:'Get',
+            url:`http://localhost:5000/sound`,
+            contentType:'application/json',
+            success: function(i){
+        }
+    }
+    )}
 
   </script>
 </body>
