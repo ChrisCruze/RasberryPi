@@ -246,5 +246,5 @@ def upload_file():
 
 
 if __name__ == "__main__":
-    server.run(host='0.0.0.0', debug=True, threaded=True)
+    server.run(host='0.0.0.0', threaded=True, port=80) #, debug=True
 
