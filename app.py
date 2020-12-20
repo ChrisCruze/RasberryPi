@@ -18,6 +18,19 @@ server = Flask(__name__)
 api = Api(server)
 CORS(server)
 
+
+class Battery(Resource):
+    def get(self):
+        headers = {
+          'X-Authorization': 'Token 2f183f0829d5b38a01d19d730584b852c6108fd19de9ec0e400e7a66b15ec45f',
+          'Content-Type': 'text/plain'
+        }
+        url = "https://vrmapi.victronenergy.com/v2/installations/88973/stats"
+        response = requests.request("GET", url, headers=headers)
+        return response.json()
+
+api.add_resource(Battery, '/battery')
+
 class MessageHello(Resource):
     def get(self):
         sense = SenseHat()
