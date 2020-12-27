@@ -31,8 +31,10 @@ The control panel will serve to control different units within the van, which wi
 	sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 
 #### How to SSH
-	ssh pi@4.tcp.ngrok.io -p14194
+	ssh pi@0.tcp.ngrok.io -p10980
 
+
+tcp://0.tcp.ngrok.io:10980	
 
 
 ### GPIO Pin Configuration
