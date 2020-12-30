@@ -14,6 +14,7 @@ from sense_hat import SenseHat
 import RPi.GPIO as GPIO
 import speedtest  
 from gtts import gTTS
+from pydub import AudioSegment
 
 
 server = Flask(__name__)
@@ -22,17 +23,33 @@ CORS(server)
 
 
 
+# class Speak(Resource):
+#     def get(self,words):
+#         args = request.args
+#         audioString = "testing 1 2 3"
+#         print(audioString)
+#         tts = gTTS(text=audioString, lang='en')
+#         tts.save("audio.mp3")
+#         sound = AudioSegment.from_mp3("audio.mp3")
+#         sound.export("audio.wav", format="wav")
+#         os.system("aplay audio.wav")
+#         return words
 
+# api.add_resource(Speak, '/speak/<string:words>')
 
 class Speak(Resource):
     def get(self):
         args = request.args
+        parsed_json_data = request.json 
+        body_form = request.form 
         audioString = "testing 1 2 3"
         print(audioString)
         tts = gTTS(text=audioString, lang='en')
         tts.save("audio.mp3")
-        os.system("mpg321 audio.mp3")
-        return args
+        sound = AudioSegment.from_mp3("audio.mp3")
+        sound.export("audio.wav", format="wav")
+        os.system("aplay audio.wav")
+        return body_form,parsed_json_data,request
 
 api.add_resource(Speak, '/speak')
 
