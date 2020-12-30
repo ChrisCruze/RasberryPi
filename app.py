@@ -13,11 +13,28 @@ import json
 from sense_hat import SenseHat
 import RPi.GPIO as GPIO
 import speedtest  
+from gtts import gTTS
+
 
 server = Flask(__name__)
 api = Api(server)
 CORS(server)
 
+
+
+
+
+class Speak(Resource):
+    def get(self):
+        args = request.args
+        audioString = "testing 1 2 3"
+        print(audioString)
+        tts = gTTS(text=audioString, lang='en')
+        tts.save("audio.mp3")
+        os.system("mpg321 audio.mp3")
+        return args
+
+api.add_resource(Speak, '/speak')
 
 class Battery(Resource):
     def get(self):

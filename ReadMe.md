@@ -25,7 +25,7 @@ The control panel will serve to control different units within the van, which wi
 ### Commands
 
 #### SSH into Pi
-	ssh pi@192.168.1.33
+	ssh pi@192.168.1.34
 
 #### Modify Auto Start Script
 	sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
