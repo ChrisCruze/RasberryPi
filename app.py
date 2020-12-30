@@ -39,10 +39,12 @@ class Speak(Resource):
     def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('words')
+        parser.add_argument('text', location=['headers','values','json','form'])
+
         args = parser.parse_args()
         # parsed_json_data = request.json 
         # body_form = request.form 
-        audioString = "testing 1 2 3"
+        audioString = args['words']
         print(audioString)
         tts = gTTS(text=audioString, lang='en')
         tts.save("audio.mp3")
