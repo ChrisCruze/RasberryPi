@@ -38,7 +38,7 @@ CORS(server)
 class Speak(Resource):
     def get(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('rate', type=int, help='Rate to charge for this resource')
+        parser.add_argument('words')
         args = parser.parse_args()
         # parsed_json_data = request.json 
         # body_form = request.form 
