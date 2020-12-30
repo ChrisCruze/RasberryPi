@@ -40,9 +40,7 @@ class User(BaseModel):
 
 class Speak(Resource):
     def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument('rate', type=int, help='Rate to charge for this resource')
-        args = parser.parse_args()
+        args = request.args
         # parsed_json_data = request.json 
         # body_form = request.form 
         audioString = "testing 1 2 3"
@@ -54,7 +52,7 @@ class Speak(Resource):
         os.system("aplay audio.wav")
         #return body_form#,parsed_json_data,request
         try:
-            return args
+            return request
         except Exception as err:
             error_message = traceback.format_exc()
             return error_message
