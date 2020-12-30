@@ -21,9 +21,6 @@ server = Flask(__name__)
 api = Api(server)
 CORS(server)
 
-class User(BaseModel):
-    name: str
-
 # class Speak(Resource):
 #     def get(self,words):
 #         args = request.args
@@ -40,7 +37,9 @@ class User(BaseModel):
 
 class Speak(Resource):
     def get(self):
-        args = request.args
+        parser = reqparse.RequestParser()
+        parser.add_argument('rate', type=int, help='Rate to charge for this resource')
+        args = parser.parse_args()
         # parsed_json_data = request.json 
         # body_form = request.form 
         audioString = "testing 1 2 3"
@@ -52,7 +51,7 @@ class Speak(Resource):
         os.system("aplay audio.wav")
         #return body_form#,parsed_json_data,request
         try:
-            return request
+            return args
         except Exception as err:
             error_message = traceback.format_exc()
             return error_message
