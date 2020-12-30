@@ -49,10 +49,9 @@ class Speak(Resource):
         sound = AudioSegment.from_mp3("audio.mp3")
         sound.export("audio.wav", format="wav")
         os.system("aplay audio.wav")
-
         #return body_form#,parsed_json_data,request
         try:
-            return request.form
+            return request
         except Exception as err:
             error_message = traceback.format_exc()
             return error_message
