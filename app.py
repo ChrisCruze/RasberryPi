@@ -70,7 +70,7 @@ class Battery(Resource):
         # }
         # url = "https://vrmapi.victronenergy.com/v2/installations/88973/stats"
         url = "https://localhost:3443/signalk/v1/api/"
-        response = requests.request("GET", url)
+        response = requests.request("GET", url,verify=False)
         return response.json()
 
 api.add_resource(Battery, '/battery')
