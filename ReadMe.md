@@ -25,7 +25,7 @@ The control panel will serve to control different units within the van, which wi
 ### Commands
 
 #### SSH into Pi
-	ssh pi@192.168.1.34
+	ssh pi@192.168.1.33
 
 #### Modify Auto Start Script
 	sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
@@ -33,6 +33,8 @@ The control panel will serve to control different units within the van, which wi
 #### How to SSH
 	ssh pi@0.tcp.ngrok.io -p10980
 
+
+ssh pi@0.tcp.ngrok.io -p10980
 
 tcp://0.tcp.ngrok.io:10980	
 
@@ -72,8 +74,18 @@ ssh -R 43022:localhost:22 dave@sulaco.local
 ssh -i key.pem -R 7070:localhost:22 ec2-user@3.139.104.15 
 
 
+## URL Commands
+Turn lights on - https://tinytech.ngrok.io/on/22
+Turn lights off - https://tinytech.ngrok.io/off/22
+Fridge - 17
 
 
+intent names
+- lightson - LightsOnIntentHandler
+- lightsoff - LightsOffIntentHandler
+
+- fridgeon - FridgeOnIntentHandler
+- fridgeoff - FridgeOffIntentHandler
 
 
 

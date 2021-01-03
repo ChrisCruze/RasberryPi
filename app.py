@@ -64,15 +64,21 @@ api.add_resource(Speak, '/speak')
 
 class Battery(Resource):
     def get(self):
-        headers = {
-          'X-Authorization': 'Token 2f183f0829d5b38a01d19d730584b852c6108fd19de9ec0e400e7a66b15ec45f',
-          'Content-Type': 'text/plain'
-        }
-        url = "https://vrmapi.victronenergy.com/v2/installations/88973/stats"
-        response = requests.request("GET", url, headers=headers)
+        # headers = {
+        #   'X-Authorization': 'Token 2f183f0829d5b38a01d19d730584b852c6108fd19de9ec0e400e7a66b15ec45f',
+        #   'Content-Type': 'text/plain'
+        # }
+        # url = "https://vrmapi.victronenergy.com/v2/installations/88973/stats"
+        url = "https://localhost:3443/signalk/v1/api/"
+        response = requests.request("GET", url)
         return response.json()
 
 api.add_resource(Battery, '/battery')
+
+
+
+
+
 
 class MessageHello(Resource):
     def get(self):
