@@ -346,7 +346,7 @@
                   <i class="fa fa-bath"></i>
                 </span>
               </li>
-              <li class="on" gpio="17" title="USB Port">
+              <li class="on" gpio="17" title="Fridge">
                 <span>
                   <i class="fa fa-cutlery"></i>
                 </span>
@@ -360,7 +360,7 @@
       <!-- Start Section Body 1 -->
       <section id="sha_temp_body" class="col-12">
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <span class="sha_temp" style="border-radius:25%;width:300px">
               <span>
                 <span class="temp-data"> <span id="time" ></span></span>
@@ -370,7 +370,17 @@
               </span>
             </span>
           </div>
-          <div class="col-6">
+          <div class="col-4">
+            <span class="sha_temp" id="battery_percentage_button">
+              <span>
+                <span class="temp-data"> <span id="battery_percentage" ></span></span>
+                <span class="temp-info">
+                  <i class="fa fa-battery-full"></i> Battery Percentage
+                </span>
+              </span>
+            </span>
+          </div>
+          <div class="col-4">
             <span class="sha_temp">
               <span>
                 <span class="temp-data"> <span id="temperature" ></span> <sup>&deg;F</sup></span>
@@ -562,12 +572,65 @@
     )}
 
 
+
+
+
+
+    function battery_percentage_get_from_endpoint(response){
+      try{
+        return response["vessels"]["urn:mrn:imo:mmsi: "]["electrical"]["batteries"]["House "]["capacity"]["stateOfCharge"]["value"]
+      }
+      catch(err){
+        console.log({err})
+        return err
+      }
+    }
+
+    function percentage_format(i){
+      try{
+        const float_percentage  = parseFloat(i)||0
+        const num = (float_percentage * 100).toFixed(1)
+        return num 
+      }
+      catch(err){
+        return '-'
+      }
+    }
+
+    function battery_update(){
+        $.ajax({
+            type:'Get',
+            url:`/battery`,
+            contentType:'application/json',
+            success: function(response){
+              $("#battery_percentage").html("...")
+
+              const battery_percentage = battery_percentage_get_from_endpoint(response)
+              console.log({battery_percentage})
+              const battery_percentage_formatted = percentage_format(battery_percentage)
+              $("#battery_percentage").html(battery_percentage_formatted)
+        }
+    })}
+
+
+
+
+
+
+
+  $( "#battery_percentage_button" ).on( "click", function() {
+    battery_update()
+  });
+
+
+
     function loop_update(){
         function refresh(){
             time_update()
             temperature_update()
             humidity_update()
             pressure_update()
+            battery_update()
             setTimeout(refresh,5000)
         }
         refresh()
@@ -603,6 +666,7 @@
     }
 
     setTimeout(loop_update_long,5000)
+
 
 
     function sound_initiate(){
