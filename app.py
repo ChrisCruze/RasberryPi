@@ -69,7 +69,8 @@ class Battery(Resource):
         #   'Content-Type': 'text/plain'
         # }
         # url = "https://vrmapi.victronenergy.com/v2/installations/88973/stats"
-        url = "https://localhost:3443/signalk/v1/api/"
+        url = "https://localhost/signalk/v1/api/"
+        #https://192.168.1.33/signalk/v1/api/
         response = requests.request("GET", url,verify=False)
         return response.json()
 

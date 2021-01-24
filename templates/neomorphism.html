@@ -578,7 +578,7 @@
 
     function battery_percentage_get_from_endpoint(response){
       try{
-        return response["vessels"]["urn:mrn:imo:mmsi: "]["electrical"]["batteries"]["House "]["capacity"]["stateOfCharge"]["value"]
+        return response['vessels']['urn:mrn:signalk:uuid:6b13e3b3-0589-4eff-8bd7-cb464880931a']["electrical"]["batteries"]["House"]["capacity"]["stateOfCharge"]["value"]
       }
       catch(err){
         console.log({err})
@@ -604,7 +604,6 @@
             contentType:'application/json',
             success: function(response){
               $("#battery_percentage").html("...")
-
               const battery_percentage = battery_percentage_get_from_endpoint(response)
               console.log({battery_percentage})
               const battery_percentage_formatted = percentage_format(battery_percentage)
