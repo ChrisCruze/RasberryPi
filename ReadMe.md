@@ -21,6 +21,20 @@ The control panel will serve to control different units within the van, which wi
 4) Water Pump
 5) Power (Inverter & 12v) - phone line connection
 
+### Additional Features
+
+- Calendar & Time - Show the date and time on the application within Electron so that can always easily know what day it is. 
+- USB Power - Implement USB Power from Battery that will charge when 120 is on and power Raspberry Pi when off
+- Bluetooh Sound Connect - Connect to Bluetooth Sound Bar via Python automatically so that it can play notification sounds, and boot up with sound effects as well. 
+- Weather - Show temperature outside and weather
+- Online Server - Host server online so that I can access different features of the Raspberry Pi interface and show whether its online or not. This should be straightforward to do by just putting site on github or site44
+- Internet Speed - Determine internet speed 
+- Location Save - Save location of where van is to Firebase Server so that I can pull stats on where I've been with the Van. 
+- Live Code Update - update code for python application backend live from online, so that I don't have to run git commands to refresh application with the latest. 
+- Habit Buttons - Show where I am with my daily habits which will pull from Push to identify if I have done them. 
+- ODB2 Connect - Pull car statistics that will be rendered on page
+- Restart Button - close the electron application with a button
+
 
 ### Commands
 
@@ -64,7 +78,6 @@ ssh -R 5000:localhost:5000 -i key.pem ec2-user@3.139.104.15
 ssh -R 7070:localhost:22 -i key.pem ec2-user@3.139.104.15 
 
 ssh -R 7070:localhost:22 -i key.pem ec2-user@ec2–3–139–104–15.us-east-2.compute.amazonaws.com
-
 
 ssh -R localhost:5000:localhost:5000 -i key.pem ec2-user@ec2–3–139–104–15.us-east-2.compute.amazonaws.com
 
